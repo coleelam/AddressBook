@@ -17,6 +17,16 @@ public class Controller {
     private ArrayList<Contact> contacte = new ArrayList();
     Scanner in = new Scanner(System.in);
     
+    String[] meniu = { "\t\t=====Meniu Agenda Telefonica=====\n",
+        "\t1.Adauga contact.", "\t9.Iesire program.",
+        "Introduceti o optiune:" };
+    
+    public void afiseazaMeniu(){
+        for(int i = 0; i < meniu.length; i++){
+            System.out.println(meniu[i]);
+        }
+    }
+    
     public void adaugaContact(){
         String nume, adresa;
         long telefon;
@@ -25,6 +35,7 @@ public class Controller {
         nume = in.nextLine();
         System.out.println("Introduceti numarul de telefon: ");
         telefon = in.nextLong();
+        in.nextLine();
         System.out.println("Introduceti adresa: ");
         adresa = in.nextLine();
         
@@ -35,8 +46,29 @@ public class Controller {
         }
     }
     
-    public static void test1(){
+    public void test1(){
+        
+        boolean check = true;
         Controller contr = new Controller();
-        contr.adaugaContact();
+        
+        while(check){
+            contr.afiseazaMeniu();
+            int optiune = in.nextInt();
+            in.nextLine();
+            switch(optiune){
+                case 1:
+                    contr.adaugaContact();
+                    break;
+                    
+                case 9:
+                    System.out.println("Exit program. La revedere!");
+                    check = false;
+                    break;
+                default:
+                    System.out.println("Alegerea dumneavoastra este gresita!");
+                    break;
+            }
+        }
+        
     }
 }

@@ -17,7 +17,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         Contact.test1();
-        Controller.test1();
+        Controller contr = new Controller();
+        contr.test1();
     }
     
 }
