@@ -1,4 +1,8 @@
+package pkg01javaphonebook2018;
+
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The AddressBookClient simulates the functionality of the AddressBook.
@@ -43,11 +47,19 @@ public class AddressBookClient {
                 System.out.println("Enter the name of the Contact to add/update: ");
                 name = s.nextLine();
                 if (subSelection == 1) {
-                    added = ab.addContact(new Contact(name));
+                    try {
+                        added = ab.addContact(new Contact(name));
+                    } catch (Exception ex) {
+                        Logger.getLogger(AddressBookClient.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else if (subSelection == 2) {
                     System.out.println("Enter the number of the Contact: ");
                     number = s.nextLong();
-                    added = ab.addContact(new Contact(name, number));
+                    try {
+                        added = ab.addContact(new Contact(name, number));
+                    } catch (Exception ex) {
+                        Logger.getLogger(AddressBookClient.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     System.out.println("Enter the number of the Contact: ");
                     number = s.nextLong();
